@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div>
+    <div *ngIf="allWishlistItems.length === 0" class="d-flex justify-content-center align-items-center flex-column">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwK2M0BuIqDfnC7DZofpHg7obg_gODtNbuCA&s" alt="">
+        <h3 class="text-danger">Wishlist Is Empty</h3>
+        <button class="btn text-success" routerLink=""><span
+                style="font-size: 800;text-decoration: underline;"><strong>Add Items To Your
+                    Wishlist</strong></span></button>
+    </div>
+    <div class="container px-4 mt-5" *ngIf="allWishlistItems.length> 0">
+        <h3 class="text-danger text-center">Your Wishlist Items</h3>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of allWishlistItems">
+                <div class="card h-100 p-3">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="product.image" alt="..." height="250px"
+                        routerLink="/view-product/{{product.id}}" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder" routerLink="/view-product/{{product.id}}">
+                                {{product.title.slice(0,20)}}..
+                            </h5>
+                            <!-- Product price-->
+                            {{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="d-flex justify-content-between m-3">
+                        <a class="btn btn-outline-danger" (click)="deleteWishlistItem(product._id)"><i class="fa-solid fa-trash"></i></a>
+                        <a class="btn btn-outline-success" (click)="addToCart(product)"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

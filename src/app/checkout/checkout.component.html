@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container-fluid d-flex justify-content-center align-items-center flex-column">
+    <h3 class="mt-5 text-danger">Delivery Details</h3>
+    <div class="row w-100">
+        <div class="col-md-6 d-flex justify-content-center">
+            <img src="https://png.pngtree.com/png-clipart/20230106/original/pngtree-delivery-boy-with-food-png-image_8876808.png"
+                alt="" height="400px" width="80%">
+        </div>
+        <div class="col-md-5">
+            <form [formGroup]="checkOutForm" class="rounded border shadow p-5 mt-5">
+                <input type="text" name="" id="" class="form-control" placeholder="Enter Your Name">
+                <input type="text" name="" id="" class="form-control mt-2" placeholder="House/ Flat Name">
+                <input type="text" name="" id="" class="form-control mt-2" placeholder="Place">
+                <input type="text" name="" id="" class="form-control mt-2" placeholder="Landmark">
+                <div class="d-flex justify-content-between mt-3" *ngIf="!makePayment">
+                    <button class="btn btn-warning w-50">Cancel</button>
+                    <button class="btn btn-success w-50 ms-2" (click)="proceedPayment()">Proceed To Payment</button>
+                </div>
+                <div *ngIf="makePayment" class="mt-3">
+                    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row w-100 d-flex justify-content-center align-items-center " style="height: 80vh;">
+    <div class="row w-75 mt-5" style="height: 470px;">
+        <div class="col-md-6 shadow d-flex justify-content-center  align-items-center flex-column p-5">
+            <div class="d-flex justify-content-center  align-items-center p-3"
+                style="height: 70px;width: 70px;border: 3px solid red;border-radius: 50%;">
+                <i class="fa-solid fa-user text-danger"></i>
+            </div>
+            <h2 class="text-center text-danger d-flex">Register User</h2>
+            <form class="border rounded p-3 w-100 shadow mt-3" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+                <div class="mb-4 mt-3">
+                    <input type="text" placeholder="Enter username" class="form-control" formControlName="username"
+                        name="username">
+                    <span class="text-danger"
+                        *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched">invalid
+                        username</span>
+                </div>
+                <div class="mb-4 ">
+                    <input type="text" placeholder="Enter email" class="form-control" formControlName="email"
+                        name="email">
+                    <span class="text-danger"
+                        *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">invalid
+                        email</span>
+                </div>
+                <div class="mb-4">
+                    <input type="password" placeholder="Enter password" class="form-control" formControlName="password"
+                        name="password">
+                    <span class="text-danger"
+                        *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">invalid
+                        password</span>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-danger w-100" type="submit" [disabled]="registerForm.invalid">REGISTER</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 shadow p-0 d-flex justify-content-center align-items-center flex-column text-light"
+            style="background-image: url('https://img.freepik.com/free-photo/full-shot-woman-sitting-chair_23-2149220652.jpg?t=st=1730448683~exp=1730452283~hmac=c4135ad2924cd0a0875bbc522cb948512d7b778e5bcf87e80165d908fa426611&w=1060');background-size: cover;">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <h4><i class="fa-brands fa-slack fa-spin me-2 ms-3"></i>GLOBAL MART</h4>
+                <h1>Already Have An Account</h1>
+                <p class="p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quae delectus,
+                    consequatur,
+                    magnam exercitationem dolores veritatis distinctio dolorum reprehenderit aut itaque esse aspernatur
+                    quisquam maxime vitae nihil explicabo ipsam veniam.</p>
+                <a routerLink="/user/login" class="btn btn-outline-light">SIGN IN</a>
+            </div>
+
+        </div>
+    </div>
+</div>
